@@ -1,0 +1,17 @@
+<h1><%= @product["name"] %></h1>
+<p><%= @product["description"] %></p>
+<h3>Price plans</h3>
+<ul>
+  <%= for price <- @prices do %>
+    <li>
+      <span>
+        <%= if price["type"] == "one_time", do: "One time payment of " %>
+        <%= if price["recurring"]["interval"] == "month", do: "Monthly subscription of " %>
+        <%= if price["recurring"]["interval"] == "year", do: "Yearly subscription of " %>
+      </span>
+      <span><b><%= "#{price["unit_amount_decimal"] |> String.split_at(-2) |> Tuple.to_list() |> Enum.join(".")} #{String.upcase(price["currency"])}" %></b></span>
+    </li>
+  <% end %>
+</ul>
+<div><%= link "Purchase now", to: "#", class: "button" %></div>
+<span><%= link "Back", to: Routes.product_path(@conn, :index) %></span>

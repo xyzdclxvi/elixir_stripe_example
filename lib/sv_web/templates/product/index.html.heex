@@ -1,0 +1,20 @@
+<h1>All available products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for product <- @products do %>
+      <tr>
+        <td><%= product["name"] %></td>
+        <td>
+          <span><%= link "Details", to: Routes.product_path(@conn, :show, product["id"]) %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

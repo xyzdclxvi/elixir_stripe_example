@@ -17,7 +17,7 @@ defmodule SVWeb.Router do
   scope "/", SVWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    resources "/", ProductController, only: [:index, :show]
   end
 
   # Other scopes may use custom stacks.

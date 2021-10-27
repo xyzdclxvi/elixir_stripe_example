@@ -47,6 +47,13 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :stripy,
+  secret_key: {:system, "STRIPE_SECRET_KEY"},
+  public_key: {:system, "STRIPE_PUBLIC_KEY"},
+  endpoint: "https://api.stripe.com/v1/",
+  version: "2017-06-05",
+  httpoison: [recv_timeout: 5000, timeout: 8000]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
