@@ -10,7 +10,8 @@ SV.Stripe.create_product(%{
 SV.Stripe.create_product(%{
   id: "product_laundromat",
   name: "Laundromat access",
-  description: "A code allowing one time or a recurring subscription access to the laundromat"
+  description: "A code allowing one time or a recurring subscription access to the laundromat",
+  shippable: false
 })
 
 SV.Stripe.create_product(%{
@@ -21,13 +22,15 @@ SV.Stripe.create_product(%{
 SV.Stripe.create_product(%{
   id: "product_subscription_1",
   name: "Basic access subscription",
-  description: "Access to super interesting web stuff"
+  description: "Access to super interesting web stuff",
+  shippable: false
 })
 
 SV.Stripe.create_product(%{
   id: "product_subscription_2",
   name: "Premium access subscription",
-  description: "Super access to mega interesting web stuff"
+  description: "Super access to mega interesting web stuff",
+  shippable: false
 })
 
 # Prices

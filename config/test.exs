@@ -8,8 +8,7 @@ config :sv, SVWeb.Endpoint,
   server: false
 
 # In test we don't send emails.
-config :sv, SV.Mailer,
-  adapter: Swoosh.Adapters.Test
+config :sv, SV.Mailer, adapter: Swoosh.Adapters.Test
 
 # Print only warnings and errors during test
 config :logger, level: :warn

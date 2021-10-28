@@ -8,6 +8,7 @@ defmodule SVWeb.Router do
     plug :put_root_layout, {SVWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug SV.Plugs.RequireUser
   end
 
   pipeline :api do
@@ -17,7 +18,8 @@ defmodule SVWeb.Router do
   scope "/", SVWeb do
     pipe_through :browser
 
-    resources "/", ProductController, only: [:index, :show]
+    get "/success", ProductController, :success
+    resources "/", ProductController, only: [:index, :show, :create]
   end
 
   # Other scopes may use custom stacks.

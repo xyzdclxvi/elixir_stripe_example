@@ -14,7 +14,7 @@
       <section class="container">
         <nav>
           <ul>
-            <li>Welcome back, (you)</li>
+            <li>Welcome back, <%= @conn.assigns[:user_email] %></li>
           </ul>
         </nav>
         <div class="phx-logo" />

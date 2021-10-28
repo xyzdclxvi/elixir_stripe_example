@@ -10,8 +10,13 @@
         <%= if price["recurring"]["interval"] == "year", do: "Yearly subscription of " %>
       </span>
       <span><b><%= "#{price["unit_amount_decimal"] |> String.split_at(-2) |> Tuple.to_list() |> Enum.join(".")} #{String.upcase(price["currency"])}" %></b></span>
+      <%= form_for :p, Routes.product_path(@conn, :create), fn f -> %>
+        <%= hidden_input f, :price_id, value: price["id"] %>
+        <%= hidden_input f, :mode, value: (if price["recurring"], do: "subscription", else: "payment") %>
+        <%= hidden_input f, :shippable, value: @product["shippable"] %>
+        <%= submit "Purchase now" %>
+      <% end %>
     </li>
   <% end %>
 </ul>
-<div><%= link "Purchase now", to: "#", class: "button" %></div>
 <span><%= link "Back", to: Routes.product_path(@conn, :index) %></span>
