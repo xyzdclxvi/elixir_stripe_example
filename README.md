@@ -11,7 +11,7 @@ This is just an example app, don't use it with production API keys.
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
-  * Set environment variables:
+  * Set environment variables using your Stripe sandbox API keys:
   ```
   export STRIPE_SECRET_KEY=sk_test_51Jke...
   export STRIPE_PUBLIC_KEY=pk_test_51Jke...
