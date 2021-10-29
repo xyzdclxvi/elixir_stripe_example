@@ -16,6 +16,7 @@ To start your Phoenix server:
   export STRIPE_SECRET_KEY=sk_test_51Jke...
   export STRIPE_PUBLIC_KEY=pk_test_51Jke...
   ```
+  * Seed products and prices to Stripe: `mix run priv/seeds.exs`
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.

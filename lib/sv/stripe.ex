@@ -65,6 +65,13 @@ defmodule SV.Stripe do
     end
   end
 
+  def get_subscriptions_for_customer(nil), do: {:ok, %{"data" => []}}
+
+  def get_subscriptions_for_customer(customer_id) do
+    Stripy.req(:get, "subscriptions", %{customer: customer_id})
+    |> decode()
+  end
+
   defp decode({:ok, %HTTPoison.Response{body: body}}), do: Poison.decode(body)
   defp decode(error), do: error
 end

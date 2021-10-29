@@ -7,7 +7,7 @@ defmodule SV.Plugs.RequireUser do
     case get_session(conn, :user_email) do
       nil ->
         random_email =
-          "#{:crypto.strong_rand_bytes(10) |> Base.url_encode64 |> binary_part(0, 10)}@example.com"
+          "#{:crypto.strong_rand_bytes(10) |> Base.url_encode64() |> binary_part(0, 10)}@example.com"
 
         conn
         |> put_session(:user_email, random_email)

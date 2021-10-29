@@ -10,7 +10,10 @@ defmodule SVWeb.ProductController do
   def show(conn, %{"id" => id}) do
     {:ok, product} = Stripe.get_product(id)
     {:ok, %{"data" => prices}} = Stripe.list_prices_for_product(product["id"])
-    render(conn, "show.html", product: product, prices: prices)
+    customer_id = Stripe.get_customer_id_by_email(conn.assigns[:user_email])
+    {:ok, %{"data" => subscriptions}} = Stripe.get_subscriptions_for_customer(customer_id)
+    subscribed_ids = Enum.map(subscriptions, & &1["plan"]["product"])
+    render(conn, "show.html", product: product, prices: prices, subscribed_ids: subscribed_ids)
   end
 
   def create(conn, %{"p" => %{"price_id" => price_id, "mode" => mode, "shippable" => shippable}}) do
